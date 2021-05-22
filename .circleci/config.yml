@@ -60,7 +60,7 @@ jobs:
           name: Build Standard full parser app
           command: |
             source /home/zondax/.cargo/env
-            SUPPORT_SR25519=1 SUBSTRATE_PARSER_FULL=1 make
+            SUBSTRATE_PARSER_FULL=1 make
       - run:
           name: Build SR25519 app
           command: |
@@ -94,9 +94,8 @@ jobs:
       - run:
           name: Build Ledger app
           command: |
-            SUBSTRATE_PARSER_FULL=1 make buildS
-            make clean
-            SUBSTRATE_PARSER_FULL=1 make buildX
+            make clean && SUBSTRATE_PARSER_FULL=1 make buildS
+            make clean && SUBSTRATE_PARSER_FULL=1 make buildX
       - run:
           name: Build/Install build js deps
           command: |
@@ -153,7 +152,7 @@ jobs:
 
   build_package:
     docker:
-      - image: zondax/builder-bolos@sha256:0e0097c01ef3c6c964fea8d8b6e3a584f4ff209a04ec68b6b2b4aeab64379c23
+      - image: zondax/builder-bolos:latest
     environment:
       BOLOS_SDK: /home/zondax/project/deps/nanos-secure-sdk
       BOLOS_ENV: /opt/bolos
