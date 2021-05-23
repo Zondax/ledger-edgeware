@@ -19,7 +19,7 @@
 extern "C" {
 #endif
 
-#define CLA                             0x94
+#define CLA                  0x94
 
 #define HDPATH_LEN_DEFAULT   5
 #define HDPATH_0_DEFAULT     (0x80000000 | 0x2c)
