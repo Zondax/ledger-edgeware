@@ -16,6 +16,8 @@ This project contains the Edgeware app (https://edgewa.re/) for Ledger Nano S an
 - C++ unit tests
 - Zemu tests
 
+For more information: [How to build](docs/build.md)
+
 ## ATTENTION
 
 Please:

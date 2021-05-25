@@ -15,8 +15,8 @@
  ******************************************************************************* */
 
 import Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
-import { newEdgewareApp } from '@zondax/ledger-polkadot'
 import { APP_SEED, models } from './common'
+import { newEdgewareApp } from '@zondax/ledger-polkadot'
 
 // @ts-ignore
 import ed25519 from 'ed25519-supercop'
