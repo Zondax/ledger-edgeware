@@ -19,7 +19,7 @@
 extern "C" {
 #endif
 
-#define CLA                             0x94
+#define CLA                  0x94
 
 #define HDPATH_LEN_DEFAULT   5
 #define HDPATH_0_DEFAULT     (0x80000000 | 0x2c)
@@ -51,7 +51,7 @@ typedef enum {
 
 #define COIN_AMOUNT_DECIMAL_PLACES          18
 
-#define COIN_GENESIS_HASH                   "0000000000000000000000000000000000000000000000000000000000000000"   // FIXME: Review
+#define COIN_GENESIS_HASH                   "742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b"
 #define COIN_NAME                           "Edgeware"
 #define COIN_TICKER                         "EDG"
 

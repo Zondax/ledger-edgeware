@@ -1594,10 +1594,10 @@ parser_error_t _readMethod_V1(
         CHECK_ERROR(_readMethod_utility_batch_all_V1(c, &method->basic.utility_batch_all_V1))
         break;
     case 1536: /* module 6 call 0 */
-        CHECK_ERROR(_readMethod_balances_transfer_V1(c, &method->basic.balances_transfer_V1))
+        CHECK_ERROR(_readMethod_balances_transfer_V1(c, &method->nested.balances_transfer_V1))
         break;
     case 1539: /* module 6 call 3 */
-        CHECK_ERROR(_readMethod_balances_transfer_keep_alive_V1(c, &method->basic.balances_transfer_keep_alive_V1))
+        CHECK_ERROR(_readMethod_balances_transfer_keep_alive_V1(c, &method->nested.balances_transfer_keep_alive_V1))
         break;
     case 2048: /* module 8 call 0 */
         CHECK_ERROR(_readMethod_staking_bond_V1(c, &method->basic.staking_bond_V1))
@@ -1638,34 +1638,34 @@ parser_error_t _readMethod_V1(
 
 #ifdef SUBSTRATE_PARSER_FULL
     case 0: /* module 0 call 0 */
-        CHECK_ERROR(_readMethod_system_fill_block_V1(c, &method->basic.system_fill_block_V1))
+        CHECK_ERROR(_readMethod_system_fill_block_V1(c, &method->nested.system_fill_block_V1))
         break;
     case 1: /* module 0 call 1 */
-        CHECK_ERROR(_readMethod_system_remark_V1(c, &method->basic.system_remark_V1))
+        CHECK_ERROR(_readMethod_system_remark_V1(c, &method->nested.system_remark_V1))
         break;
     case 2: /* module 0 call 2 */
-        CHECK_ERROR(_readMethod_system_set_heap_pages_V1(c, &method->basic.system_set_heap_pages_V1))
+        CHECK_ERROR(_readMethod_system_set_heap_pages_V1(c, &method->nested.system_set_heap_pages_V1))
         break;
     case 3: /* module 0 call 3 */
-        CHECK_ERROR(_readMethod_system_set_code_V1(c, &method->basic.system_set_code_V1))
+        CHECK_ERROR(_readMethod_system_set_code_V1(c, &method->nested.system_set_code_V1))
         break;
     case 4: /* module 0 call 4 */
-        CHECK_ERROR(_readMethod_system_set_code_without_checks_V1(c, &method->basic.system_set_code_without_checks_V1))
+        CHECK_ERROR(_readMethod_system_set_code_without_checks_V1(c, &method->nested.system_set_code_without_checks_V1))
         break;
     case 5: /* module 0 call 5 */
-        CHECK_ERROR(_readMethod_system_set_changes_trie_config_V1(c, &method->basic.system_set_changes_trie_config_V1))
+        CHECK_ERROR(_readMethod_system_set_changes_trie_config_V1(c, &method->nested.system_set_changes_trie_config_V1))
         break;
     case 6: /* module 0 call 6 */
-        CHECK_ERROR(_readMethod_system_set_storage_V1(c, &method->basic.system_set_storage_V1))
+        CHECK_ERROR(_readMethod_system_set_storage_V1(c, &method->nested.system_set_storage_V1))
         break;
     case 7: /* module 0 call 7 */
-        CHECK_ERROR(_readMethod_system_kill_storage_V1(c, &method->basic.system_kill_storage_V1))
+        CHECK_ERROR(_readMethod_system_kill_storage_V1(c, &method->nested.system_kill_storage_V1))
         break;
     case 8: /* module 0 call 8 */
-        CHECK_ERROR(_readMethod_system_kill_prefix_V1(c, &method->basic.system_kill_prefix_V1))
+        CHECK_ERROR(_readMethod_system_kill_prefix_V1(c, &method->nested.system_kill_prefix_V1))
         break;
     case 9: /* module 0 call 9 */
-        CHECK_ERROR(_readMethod_system_suicide_V1(c, &method->basic.system_suicide_V1))
+        CHECK_ERROR(_readMethod_system_suicide_V1(c, &method->nested.system_suicide_V1))
         break;
     case 257: /* module 1 call 1 */
         CHECK_ERROR(_readMethod_utility_as_derivative_V1(c, &method->basic.utility_as_derivative_V1))
@@ -1692,10 +1692,10 @@ parser_error_t _readMethod_V1(
         CHECK_ERROR(_readMethod_indices_freeze_V1(c, &method->basic.indices_freeze_V1))
         break;
     case 1537: /* module 6 call 1 */
-        CHECK_ERROR(_readMethod_balances_set_balance_V1(c, &method->basic.balances_set_balance_V1))
+        CHECK_ERROR(_readMethod_balances_set_balance_V1(c, &method->nested.balances_set_balance_V1))
         break;
     case 1538: /* module 6 call 2 */
-        CHECK_ERROR(_readMethod_balances_force_transfer_V1(c, &method->basic.balances_force_transfer_V1))
+        CHECK_ERROR(_readMethod_balances_force_transfer_V1(c, &method->nested.balances_force_transfer_V1))
         break;
     case 2056: /* module 8 call 8 */
         CHECK_ERROR(_readMethod_staking_set_controller_V1(c, &method->basic.staking_set_controller_V1))
@@ -2001,7 +2001,7 @@ parser_error_t _readMethod_V1(
         CHECK_ERROR(_readMethod_scheduler_schedule_named_after_V1(c, &method->basic.scheduler_schedule_named_after_V1))
         break;
     case 6912: /* module 27 call 0 */
-        CHECK_ERROR(_readMethod_proxy_proxy_V1(c, &method->basic.proxy_proxy_V1))
+        CHECK_ERROR(_readMethod_proxy_proxy_V1(c, &method->nested.proxy_proxy_V1))
         break;
     case 6913: /* module 27 call 1 */
         CHECK_ERROR(_readMethod_proxy_add_proxy_V1(c, &method->basic.proxy_add_proxy_V1))
@@ -2031,16 +2031,16 @@ parser_error_t _readMethod_V1(
         CHECK_ERROR(_readMethod_proxy_proxy_announced_V1(c, &method->basic.proxy_proxy_announced_V1))
         break;
     case 7168: /* module 28 call 0 */
-        CHECK_ERROR(_readMethod_multisig_as_multi_threshold_1_V1(c, &method->basic.multisig_as_multi_threshold_1_V1))
+        CHECK_ERROR(_readMethod_multisig_as_multi_threshold_1_V1(c, &method->nested.multisig_as_multi_threshold_1_V1))
         break;
     case 7169: /* module 28 call 1 */
-        CHECK_ERROR(_readMethod_multisig_as_multi_V1(c, &method->basic.multisig_as_multi_V1))
+        CHECK_ERROR(_readMethod_multisig_as_multi_V1(c, &method->nested.multisig_as_multi_V1))
         break;
     case 7170: /* module 28 call 2 */
-        CHECK_ERROR(_readMethod_multisig_approve_as_multi_V1(c, &method->basic.multisig_approve_as_multi_V1))
+        CHECK_ERROR(_readMethod_multisig_approve_as_multi_V1(c, &method->nested.multisig_approve_as_multi_V1))
         break;
     case 7171: /* module 28 call 3 */
-        CHECK_ERROR(_readMethod_multisig_cancel_as_multi_V1(c, &method->basic.multisig_cancel_as_multi_V1))
+        CHECK_ERROR(_readMethod_multisig_cancel_as_multi_V1(c, &method->nested.multisig_cancel_as_multi_V1))
         break;
     case 7424: /* module 29 call 0 */
         CHECK_ERROR(_readMethod_assets_create_V1(c, &method->basic.assets_create_V1))
@@ -4865,12 +4865,12 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* balances_transfer_V1 - dest */;
             return _toStringLookupSource_V1(
-                &m->basic.balances_transfer_V1.dest,
+                &m->nested.balances_transfer_V1.dest,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* balances_transfer_V1 - value */;
             return _toStringCompactBalance(
-                &m->basic.balances_transfer_V1.value,
+                &m->nested.balances_transfer_V1.value,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -4880,12 +4880,12 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* balances_transfer_keep_alive_V1 - dest */;
             return _toStringLookupSource_V1(
-                &m->basic.balances_transfer_keep_alive_V1.dest,
+                &m->nested.balances_transfer_keep_alive_V1.dest,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* balances_transfer_keep_alive_V1 - value */;
             return _toStringCompactBalance(
-                &m->basic.balances_transfer_keep_alive_V1.value,
+                &m->nested.balances_transfer_keep_alive_V1.value,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5026,7 +5026,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_fill_block_V1 - _ratio */;
             return _toStringPerbill_V1(
-                &m->basic.system_fill_block_V1._ratio,
+                &m->nested.system_fill_block_V1._ratio,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5036,7 +5036,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_remark_V1 - _remark */;
             return _toStringBytes(
-                &m->basic.system_remark_V1._remark,
+                &m->nested.system_remark_V1._remark,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5046,7 +5046,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_set_heap_pages_V1 - pages */;
             return _toStringu64(
-                &m->basic.system_set_heap_pages_V1.pages,
+                &m->nested.system_set_heap_pages_V1.pages,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5056,7 +5056,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_set_code_V1 - code */;
             return _toStringBytes(
-                &m->basic.system_set_code_V1.code,
+                &m->nested.system_set_code_V1.code,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5066,7 +5066,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_set_code_without_checks_V1 - code */;
             return _toStringBytes(
-                &m->basic.system_set_code_without_checks_V1.code,
+                &m->nested.system_set_code_without_checks_V1.code,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5076,7 +5076,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_set_changes_trie_config_V1 - changes_trie_config */;
             return _toStringOptionChangesTrieConfiguration_V1(
-                &m->basic.system_set_changes_trie_config_V1.changes_trie_config,
+                &m->nested.system_set_changes_trie_config_V1.changes_trie_config,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5086,7 +5086,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_set_storage_V1 - items */;
             return _toStringVecKeyValue_V1(
-                &m->basic.system_set_storage_V1.items,
+                &m->nested.system_set_storage_V1.items,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5096,7 +5096,7 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_kill_storage_V1 - keys */;
             return _toStringVecKey_V1(
-                &m->basic.system_kill_storage_V1.keys,
+                &m->nested.system_kill_storage_V1.keys,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5106,12 +5106,12 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* system_kill_prefix_V1 - prefix */;
             return _toStringKey_V1(
-                &m->basic.system_kill_prefix_V1.prefix,
+                &m->nested.system_kill_prefix_V1.prefix,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* system_kill_prefix_V1 - _subkeys */;
             return _toStringu32(
-                &m->basic.system_kill_prefix_V1._subkeys,
+                &m->nested.system_kill_prefix_V1._subkeys,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5226,17 +5226,17 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* balances_set_balance_V1 - who */;
             return _toStringLookupSource_V1(
-                &m->basic.balances_set_balance_V1.who,
+                &m->nested.balances_set_balance_V1.who,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* balances_set_balance_V1 - new_free */;
             return _toStringCompactBalance(
-                &m->basic.balances_set_balance_V1.new_free,
+                &m->nested.balances_set_balance_V1.new_free,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* balances_set_balance_V1 - new_reserved */;
             return _toStringCompactBalance(
-                &m->basic.balances_set_balance_V1.new_reserved,
+                &m->nested.balances_set_balance_V1.new_reserved,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -5246,17 +5246,17 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* balances_force_transfer_V1 - source */;
             return _toStringLookupSource_V1(
-                &m->basic.balances_force_transfer_V1.source,
+                &m->nested.balances_force_transfer_V1.source,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* balances_force_transfer_V1 - dest */;
             return _toStringLookupSource_V1(
-                &m->basic.balances_force_transfer_V1.dest,
+                &m->nested.balances_force_transfer_V1.dest,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* balances_force_transfer_V1 - value */;
             return _toStringCompactBalance(
-                &m->basic.balances_force_transfer_V1.value,
+                &m->nested.balances_force_transfer_V1.value,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -6631,17 +6631,17 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* proxy_proxy_V1 - real */;
             return _toStringAccountId_V1(
-                &m->basic.proxy_proxy_V1.real,
+                &m->nested.proxy_proxy_V1.real,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* proxy_proxy_V1 - force_proxy_type */;
             return _toStringOptionProxyType_V1(
-                &m->basic.proxy_proxy_V1.force_proxy_type,
+                &m->nested.proxy_proxy_V1.force_proxy_type,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* proxy_proxy_V1 - call */;
             return _toStringCall(
-                &m->basic.proxy_proxy_V1.call,
+                &m->nested.proxy_proxy_V1.call,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -6816,12 +6816,12 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* multisig_as_multi_threshold_1_V1 - other_signatories */;
             return _toStringVecAccountId_V1(
-                &m->basic.multisig_as_multi_threshold_1_V1.other_signatories,
+                &m->nested.multisig_as_multi_threshold_1_V1.other_signatories,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* multisig_as_multi_threshold_1_V1 - call */;
             return _toStringCall(
-                &m->basic.multisig_as_multi_threshold_1_V1.call,
+                &m->nested.multisig_as_multi_threshold_1_V1.call,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -6831,32 +6831,32 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* multisig_as_multi_V1 - threshold */;
             return _toStringu16(
-                &m->basic.multisig_as_multi_V1.threshold,
+                &m->nested.multisig_as_multi_V1.threshold,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* multisig_as_multi_V1 - other_signatories */;
             return _toStringVecAccountId_V1(
-                &m->basic.multisig_as_multi_V1.other_signatories,
+                &m->nested.multisig_as_multi_V1.other_signatories,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* multisig_as_multi_V1 - maybe_timepoint */;
             return _toStringOptionTimepoint_V1(
-                &m->basic.multisig_as_multi_V1.maybe_timepoint,
+                &m->nested.multisig_as_multi_V1.maybe_timepoint,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 3: /* multisig_as_multi_V1 - call */;
             return _toStringOpaqueCall_V1(
-                &m->basic.multisig_as_multi_V1.call,
+                &m->nested.multisig_as_multi_V1.call,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 4: /* multisig_as_multi_V1 - store_call */;
             return _toStringbool(
-                &m->basic.multisig_as_multi_V1.store_call,
+                &m->nested.multisig_as_multi_V1.store_call,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 5: /* multisig_as_multi_V1 - max_weight */;
             return _toStringWeight_V1(
-                &m->basic.multisig_as_multi_V1.max_weight,
+                &m->nested.multisig_as_multi_V1.max_weight,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -6866,27 +6866,27 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* multisig_approve_as_multi_V1 - threshold */;
             return _toStringu16(
-                &m->basic.multisig_approve_as_multi_V1.threshold,
+                &m->nested.multisig_approve_as_multi_V1.threshold,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* multisig_approve_as_multi_V1 - other_signatories */;
             return _toStringVecAccountId_V1(
-                &m->basic.multisig_approve_as_multi_V1.other_signatories,
+                &m->nested.multisig_approve_as_multi_V1.other_signatories,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* multisig_approve_as_multi_V1 - maybe_timepoint */;
             return _toStringOptionTimepoint_V1(
-                &m->basic.multisig_approve_as_multi_V1.maybe_timepoint,
+                &m->nested.multisig_approve_as_multi_V1.maybe_timepoint,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 3: /* multisig_approve_as_multi_V1 - call_hash */;
             return _toStringu8_array_32_V1(
-                &m->basic.multisig_approve_as_multi_V1.call_hash,
+                &m->nested.multisig_approve_as_multi_V1.call_hash,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 4: /* multisig_approve_as_multi_V1 - max_weight */;
             return _toStringWeight_V1(
-                &m->basic.multisig_approve_as_multi_V1.max_weight,
+                &m->nested.multisig_approve_as_multi_V1.max_weight,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -6896,22 +6896,22 @@ parser_error_t _getMethod_ItemValue_V1(
         switch (itemIdx) {
         case 0: /* multisig_cancel_as_multi_V1 - threshold */;
             return _toStringu16(
-                &m->basic.multisig_cancel_as_multi_V1.threshold,
+                &m->nested.multisig_cancel_as_multi_V1.threshold,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 1: /* multisig_cancel_as_multi_V1 - other_signatories */;
             return _toStringVecAccountId_V1(
-                &m->basic.multisig_cancel_as_multi_V1.other_signatories,
+                &m->nested.multisig_cancel_as_multi_V1.other_signatories,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 2: /* multisig_cancel_as_multi_V1 - timepoint */;
             return _toStringTimepoint_V1(
-                &m->basic.multisig_cancel_as_multi_V1.timepoint,
+                &m->nested.multisig_cancel_as_multi_V1.timepoint,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         case 3: /* multisig_cancel_as_multi_V1 - call_hash */;
             return _toStringu8_array_32_V1(
-                &m->basic.multisig_cancel_as_multi_V1.call_hash,
+                &m->nested.multisig_cancel_as_multi_V1.call_hash,
                 outValue, outValueLen,
                 pageIdx, pageCount);
         default:
@@ -7779,16 +7779,6 @@ bool _getMethod_IsNestingSupported_V1(uint8_t moduleIdx, uint8_t callIdx)
     uint16_t callPrivIdx = ((uint16_t)moduleIdx << 8u) + callIdx;
 
     switch (callPrivIdx) {
-    case 0: // System:Fill block
-    case 1: // System:Remark
-    case 2: // System:Set heap pages
-    case 3: // System:Set code
-    case 4: // System:Set code without checks
-    case 5: // System:Set changes trie config
-    case 6: // System:Set storage
-    case 7: // System:Kill storage
-    case 8: // System:Kill prefix
-    case 9: // System:Suicide
     case 256: // Utility:Batch
     case 257: // Utility:As derivative
     case 258: // Utility:Batch all
@@ -7799,10 +7789,6 @@ bool _getMethod_IsNestingSupported_V1(uint8_t moduleIdx, uint8_t callIdx)
     case 1282: // Indices:Free
     case 1283: // Indices:Force transfer
     case 1284: // Indices:Freeze
-    case 1536: // Balances:Transfer
-    case 1537: // Balances:Set balance
-    case 1538: // Balances:Force transfer
-    case 1539: // Balances:Transfer keep alive
     case 2048: // Staking:Bond
     case 2049: // Staking:Bond extra
     case 2050: // Staking:Unbond
@@ -7916,7 +7902,6 @@ bool _getMethod_IsNestingSupported_V1(uint8_t moduleIdx, uint8_t callIdx)
     case 6659: // Scheduler:Cancel named
     case 6660: // Scheduler:Schedule after
     case 6661: // Scheduler:Schedule named after
-    case 6912: // Proxy:Proxy
     case 6913: // Proxy:Add proxy
     case 6914: // Proxy:Remove proxy
     case 6915: // Proxy:Remove proxies
@@ -7926,10 +7911,6 @@ bool _getMethod_IsNestingSupported_V1(uint8_t moduleIdx, uint8_t callIdx)
     case 6919: // Proxy:Remove announcement
     case 6920: // Proxy:Reject announcement
     case 6921: // Proxy:Proxy announced
-    case 7168: // Multisig:As multi threshold 1
-    case 7169: // Multisig:As multi
-    case 7170: // Multisig:Approve as multi
-    case 7171: // Multisig:Cancel as multi
     case 7424: // Assets:Create
     case 7425: // Assets:Force create
     case 7426: // Assets:Destroy
