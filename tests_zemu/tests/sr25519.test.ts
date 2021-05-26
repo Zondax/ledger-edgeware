@@ -118,7 +118,7 @@ describe('SR25519', function () {
       const pathIndex = 0x80000000
 
       const txBlobStr =
-        '0600008178fbd135b0ef324e9a0438ac40c70bec9ecb46a7c4d18cc13187771f869f998ed73e0dd5038d24002e0000000100000037343261326361373063326664613663656534663864663938643634633463363734326132636137306332666461366365653466386466393864363463346336'
+        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -130,7 +130,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_normal', 4)
+      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_normal', 5)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -168,7 +168,7 @@ describe('SR25519', function () {
       await sim.clickLeft()
 
       const txBlobStr =
-        '0600008178fbd135b0ef324e9a0438ac40c70bec9ecb46a7c4d18cc13187771f869f998ed73e0dd5038d24002e0000000100000037343261326361373063326664613663656534663864663938643634633463363734326132636137306332666461366365653466386466393864363463346336'
+        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -181,7 +181,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_expert', 10)
+      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_expert', 11)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -226,7 +226,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_large_nomination', 11)
+      await sim.compareSnapshotsAndAccept('.', 's-sign_large_nomination', 6)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
