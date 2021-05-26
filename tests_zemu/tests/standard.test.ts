@@ -156,7 +156,7 @@ describe('Standard', function () {
       const pathIndex = 0x80000000
 
       const txBlobStr =
-        '0600008178fbd135b0ef324e9a0438ac40c70bec9ecb46a7c4d18cc13187771f869f998ed73e0dd5038d24002e0000000100000037343261326361373063326664613663656534663864663938643634633463363734326132636137306332666461366365653466386466393864363463346336'
+        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -168,7 +168,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_normal`, m.name === 'nanos' ? 4 : 4)
+      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_normal`, m.name === 'nanos' ? 5 : 5)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -205,7 +205,7 @@ describe('Standard', function () {
       await sim.clickLeft()
 
       const txBlobStr =
-        '0600008178fbd135b0ef324e9a0438ac40c70bec9ecb46a7c4d18cc13187771f869f998ed73e0dd5038d24002e0000000100000037343261326361373063326664613663656534663864663938643634633463363734326132636137306332666461366365653466386466393864363463346336'
+        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -218,7 +218,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_expert`, 10)
+      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_expert`, 11)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -250,7 +250,7 @@ describe('Standard', function () {
       const pathIndex = 0x80000000
 
       const txBlobStr =
-        '0805100096b662ea2d97cf848204aa5f97efcffb5eb45980be3722c359bbdae6c27d0869002c152713cb391768b963abdd9d124bfce77fc0546bf4053be9c1500ea3b5e346006ef1f811bdd71390f57f00cccf8cf6a751f1ba1311dfaaad1759c6da592dff0300b653b19dae0aac5f18845f238cef82dbc310c530a1ed482e05eb2a9c5c6d1307d50304002d0000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
+        '080508002229b353a1b15bf4743ff12fb2c660ff8edf888f6f89bb11fb9878a57435034e00240eb98ac9d5823076f4005dfade11fadd72fcf2c9b902401f882ba926d0170ad503006d0f2e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -262,7 +262,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_large_nomination`, m.name === 'nanos' ? 9 : 6)
+      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_large_nomination`, m.name === 'nanos' ? 6 : 5)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)

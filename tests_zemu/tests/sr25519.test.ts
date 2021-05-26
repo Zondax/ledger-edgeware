@@ -204,61 +204,6 @@ describe('SR25519', function () {
     }
   })
 
-  test('sign basic expert - accept shortcut', async function () {
-    const sim = new Zemu(APP_PATH)
-    try {
-      await sim.start({ ...defaultOptions })
-      const app = newEdgewareApp(sim.getTransport())
-      const pathAccount = 0x80000000
-      const pathChange = 0x80000000
-      const pathIndex = 0x80000000
-
-      // Change to expert mode so we can skip fields
-      await sim.clickRight()
-      await sim.clickBoth()
-      await sim.clickLeft()
-
-      const txBlobStr =
-        '0600008aaf3b387e93d944d6bed7c56a0b75907f9ce2faca80f161f852c0f5511665516d0fd503ae110300002d0000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
-
-      const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex, false, 1)
-      const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
-
-      // do not wait here.. we need to navigate
-      const signatureRequest = app.sign(pathAccount, pathChange, pathIndex, txBlob, 1)
-
-      // Wait until we are not in the main menu
-      await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-
-      // Shortcut to accept menu
-      await sim.clickBoth()
-
-      // Accept tx
-      await sim.clickBoth()
-
-      const signatureResponse = await signatureRequest
-      console.log(signatureResponse)
-
-      expect(signatureResponse.return_code).toEqual(0x9000)
-      expect(signatureResponse.error_message).toEqual('No errors')
-
-      // Now verify the signature
-      let prehash = txBlob
-      if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
-        blake2bUpdate(context, txBlob)
-        prehash = Buffer.from(blake2bFinal(context))
-      }
-      const signingcontext = Buffer.from([])
-      const valid = addon.schnorrkel_verify(pubKey, signingcontext, prehash, signatureResponse.signature.slice(1))
-      expect(valid).toEqual(true)
-    } finally {
-      await sim.close()
-    }
-  })
-
   test('sign large nomination', async function () {
     const sim = new Zemu(APP_PATH)
     try {
@@ -269,7 +214,7 @@ describe('SR25519', function () {
       const pathIndex = 0x80000000
 
       const txBlobStr =
-        '0805100096b662ea2d97cf848204aa5f97efcffb5eb45980be3722c359bbdae6c27d0869002c152713cb391768b963abdd9d124bfce77fc0546bf4053be9c1500ea3b5e346006ef1f811bdd71390f57f00cccf8cf6a751f1ba1311dfaaad1759c6da592dff0300b653b19dae0aac5f18845f238cef82dbc310c530a1ed482e05eb2a9c5c6d1307d50304002d0000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
+        '080508002229b353a1b15bf4743ff12fb2c660ff8edf888f6f89bb11fb9878a57435034e00240eb98ac9d5823076f4005dfade11fadd72fcf2c9b902401f882ba926d0170ad503006d0f2e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
 
       const txBlob = Buffer.from(txBlobStr, 'hex')
 
@@ -281,7 +226,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_large_nomination', 9)
+      await sim.compareSnapshotsAndAccept('.', 's-sign_large_nomination', 11)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
