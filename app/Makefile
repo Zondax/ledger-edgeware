@@ -76,13 +76,13 @@ ifeq ($(TARGET_NAME),TARGET_NANOX)
 DEFINES += SUBSTRATE_PARSER_FULL
 endif
 APPNAME = "Edgeware"
-APPPATH = "44'/747'"
+APPPATH = "44'/523'"
 
 else ifeq ($(COIN),DOT_XL)
 # XXL app configuration
 DEFINES += APP_STANDARD SUBSTRATE_PARSER_FULL
 APPNAME = "Edgeware XL"
-APPPATH = "44'/747'"
+APPPATH = "44'/523'"
 
 else
 define error_message
