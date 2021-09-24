@@ -78,7 +78,7 @@ endif
 APPNAME = "Edgeware"
 APPPATH = "44'/523'"
 
-else ifeq ($(COIN),DOT_XL)
+else ifeq ($(COIN),EDG_XL)
 # XXL app configuration
 DEFINES += APP_STANDARD SUBSTRATE_PARSER_FULL
 APPNAME = "Edgeware XL"
