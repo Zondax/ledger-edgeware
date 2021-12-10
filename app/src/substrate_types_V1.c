@@ -22,6 +22,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <zxmacros.h>
+#include <zxformat.h>
 
 parser_error_t _readCompactAssetId_V1(parser_context_t* c, pd_CompactAssetId_V1_t* v)
 {
