@@ -103,7 +103,7 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.4.0'
+          node-version: '14.17.0'
       - name: Install yarn
         run: |
           npm install -g yarn
@@ -135,7 +135,7 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v2
         with:
-          node-version: '14.4.0'
+          node-version: '14.17.0'
       - name: Install yarn
         run: |
           npm install -g yarn
