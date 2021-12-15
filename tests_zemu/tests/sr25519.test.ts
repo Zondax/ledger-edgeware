@@ -141,7 +141,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -192,7 +192,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -237,7 +237,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
