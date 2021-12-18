@@ -18,8 +18,10 @@
 #include "coin.h"
 #include "zxerror.h"
 #include "zxmacros.h"
+#include "zxformat.h"
 #include "app_mode.h"
 #include "crypto.h"
+
 
 zxerr_t addr_getNumItems(uint8_t *num_items) {
     zemu_log_stack("addr_getNumItems");
