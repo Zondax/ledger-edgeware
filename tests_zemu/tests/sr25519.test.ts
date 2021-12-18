@@ -15,8 +15,8 @@
  ******************************************************************************* */
 
 import Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
-import { newEdgewareApp } from '@zondax/ledger-polkadot'
-import { APP_SEED } from './common'
+import { newEdgewareApp } from '@zondax/ledger-substrate'
+import { APP_SEED, txBasic, txNomination } from './common'
 
 // @ts-ignore
 import { blake2bFinal, blake2bInit, blake2bUpdate } from 'blakejs'
@@ -34,6 +34,10 @@ const defaultOptions = {
 }
 
 jest.setTimeout(60000)
+
+beforeAll(async () => {
+  await Zemu.checkAndPullImage()
+})
 
 describe('SR25519', function () {
   test('get address sr25519', async function () {
@@ -117,10 +121,7 @@ describe('SR25519', function () {
       const pathChange = 0x80000000
       const pathIndex = 0x80000000
 
-      const txBlobStr =
-        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txBasic, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex, false, 1)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -141,7 +142,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -167,10 +168,7 @@ describe('SR25519', function () {
       await sim.clickBoth()
       await sim.clickLeft()
 
-      const txBlobStr =
-        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txBasic, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex, false, 1)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -192,7 +190,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -213,10 +211,7 @@ describe('SR25519', function () {
       const pathChange = 0x80000000
       const pathIndex = 0x80000000
 
-      const txBlobStr =
-        '080508002229b353a1b15bf4743ff12fb2c660ff8edf888f6f89bb11fb9878a57435034e00240eb98ac9d5823076f4005dfade11fadd72fcf2c9b902401f882ba926d0170ad503006d0f2e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txNomination, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex, false, 1)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -237,7 +232,7 @@ describe('SR25519', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }

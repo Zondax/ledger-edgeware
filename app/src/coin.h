@@ -53,7 +53,7 @@ typedef enum {
 
 #define COIN_GENESIS_HASH                   "742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b"
 #define COIN_NAME                           "Edgeware"
-#define COIN_TICKER                         "EDG"
+#define COIN_TICKER                         "EDG "
 
 #define COIN_SECRET_REQUIRED_CLICKS         0
 
