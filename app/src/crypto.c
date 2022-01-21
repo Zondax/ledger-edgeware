@@ -80,7 +80,7 @@ zxerr_t crypto_extractPublicKey(key_kind_e addressKind, const uint32_t path[HDPA
         {
             MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
             MEMZERO(privateKeyData, SK_LEN_25519);
-            CLOSE_TRY
+            CLOSE_TRY;
             return zxerr_unknown;
         }
         FINALLY
