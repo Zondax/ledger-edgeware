@@ -76,6 +76,13 @@ zxerr_t crypto_extractPublicKey(key_kind_e addressKind, const uint32_t path[HDPA
                     return zxerr_invalid_crypto_settings;
             }
         }
+        CATCH_ALL
+        {
+            MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
+            MEMZERO(privateKeyData, SK_LEN_25519);
+            CLOSE_TRY
+            return zxerr_unknown;
+        }
         FINALLY
         {
             MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
@@ -141,10 +148,11 @@ zxerr_t crypto_sign_ed25519(uint8_t *signature, uint16_t signatureMaxlen,
         CATCH_ALL
         {
             MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
+            MEMZERO(privateKeyData, SK_LEN_25519);
             *signatureLen = 0;
             CLOSE_TRY;
             return zxerr_unknown;
-        };
+        }
         FINALLY
         {
             MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
