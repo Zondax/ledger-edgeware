@@ -537,7 +537,6 @@ parser_error_t _toStringTupleDataData(
         CHECK_ERROR(_toStringData(&v->data2, outValue, outValueLen, pageIdx, &pages[1]))
         return parser_ok;
     }
-    // pageIdx -= pages[1];
 
     return parser_display_idx_out_of_range;
 }

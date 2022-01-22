@@ -185,7 +185,6 @@ zxerr_t h_review_update_data() {
         zemu_log_stack("h_review_update_data - GetNumItems==NULL");
         return zxerr_no_data;
     }
-        
     if (viewdata.viewfuncGetItem == NULL) {
         zemu_log_stack("h_review_update_data - GetItem==NULL");
         return zxerr_no_data;
