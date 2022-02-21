@@ -1,5 +1,9 @@
 name: Build
-on: [push]
+on:
+  push:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   configure:
@@ -206,4 +210,4 @@ jobs:
           files: ./app/pkg/installer_XL_s.sh
           tag_name: ${{ steps.vars_2.outputs.tag_name }}
           draft: false
-          prerelease: false          
+          prerelease: false
