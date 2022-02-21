@@ -1,6 +1,6 @@
 # Ledger Edgeware app
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CircleCI](https://circleci.com/gh/Zondax/ledger-edgeware.svg?style=shield&circle-token=1347836eec60736c630e1785834c4b3b0e8db221)](https://circleci.com/gh/Zondax/ledger-edgeware)
+[![GithubActions](https://github.com/zondax/ledger-edgeware/actions/workflows/main.yml/badge.svg)](https://github.com/Zondax/ledger-edgeware/blob/main/.github/workflows/main.yaml)
 
 -------------------
 

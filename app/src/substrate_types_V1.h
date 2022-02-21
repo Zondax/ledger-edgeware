@@ -159,6 +159,7 @@ typedef struct {
 
 typedef struct {
     pd_CompactPerBill_V1_t commission;
+    pd_bool_t blocked;
 } pd_ValidatorPrefs_V1_t;
 
 typedef struct {
@@ -255,11 +256,6 @@ typedef struct {
     // TODO: Not implemented
     uint8_t _NOT_IMPLEMENTED__DO_NOT_USE;
 } pd_H160_V1_t;
-
-typedef struct {
-    // TODO: Not implemented
-    uint8_t _NOT_IMPLEMENTED__DO_NOT_USE;
-} pd_H256_V1_t;
 
 typedef struct {
     // TODO: Not implemented
@@ -382,10 +378,6 @@ typedef struct {
 typedef struct {
     uint64_t value;
 } pd_Weight_V1_t;
-
-typedef struct {
-    const uint8_t* _ptr;
-} pd_u8_array_32_V1_t;
 
 #ifdef __cplusplus
 }

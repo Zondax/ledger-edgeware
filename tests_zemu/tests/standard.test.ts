@@ -1,5 +1,5 @@
 /** ******************************************************************************
- *  (c) 2020 Zondax GmbH
+ *  (c) 2021 Zondax GmbH
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  ******************************************************************************* */
 
 import Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
-import { APP_SEED, models } from './common'
-import { newEdgewareApp } from '@zondax/ledger-polkadot'
+import { newEdgewareApp } from '@zondax/ledger-substrate'
+import {APP_SEED, models, txBasic, txNomination} from './common'
 
 // @ts-ignore
 import ed25519 from 'ed25519-supercop'
@@ -31,6 +31,10 @@ const defaultOptions = {
 }
 
 jest.setTimeout(60000)
+
+beforeAll(async () => {
+  await Zemu.checkAndPullImage()
+})
 
 describe('Standard', function () {
   test.each(models)('can start and stop container', async function (m) {
@@ -155,10 +159,7 @@ describe('Standard', function () {
       const pathChange = 0x80000000
       const pathIndex = 0x80000000
 
-      const txBlobStr =
-        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txBasic, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -179,7 +180,7 @@ describe('Standard', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -204,10 +205,7 @@ describe('Standard', function () {
       await sim.clickBoth()
       await sim.clickLeft()
 
-      const txBlobStr =
-        '060000036fa3fc0b5aa41e86dc2ce5cb3a28cb322ad401b017c2232949f009697dce7e0b63ce64c10c05d503ae11030003d20296492e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txBasic, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -229,7 +227,7 @@ describe('Standard', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }
@@ -249,10 +247,7 @@ describe('Standard', function () {
       const pathChange = 0x80000000
       const pathIndex = 0x80000000
 
-      const txBlobStr =
-        '080508002229b353a1b15bf4743ff12fb2c660ff8edf888f6f89bb11fb9878a57435034e00240eb98ac9d5823076f4005dfade11fadd72fcf2c9b902401f882ba926d0170ad503006d0f2e00000001000000742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b'
-
-      const txBlob = Buffer.from(txBlobStr, 'hex')
+      const txBlob = Buffer.from(txNomination, 'hex')
 
       const responseAddr = await app.getAddress(pathAccount, pathChange, pathIndex)
       const pubKey = Buffer.from(responseAddr.pubKey, 'hex')
@@ -273,7 +268,7 @@ describe('Standard', function () {
       // Now verify the signature
       let prehash = txBlob
       if (txBlob.length > 256) {
-        const context = blake2bInit(32, null)
+        const context = blake2bInit(32)
         blake2bUpdate(context, txBlob)
         prehash = Buffer.from(blake2bFinal(context))
       }

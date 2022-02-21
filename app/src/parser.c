@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 #include <zxmacros.h>
-#include "zbuffer.h"
+#include <zxformat.h>
 #include "app_mode.h"
 #include "parser.h"
 #include "coin.h"
@@ -52,7 +52,7 @@ parser_error_t parser_parse(parser_context_t *ctx, const uint8_t *data, size_t d
     ctx->tx_obj->nestCallIdx.isTail = true;
     parser_error_t err = _readTx(ctx, ctx->tx_obj);
     CTX_CHECK_AVAIL(ctx, 0)
-    zb_check_canary();
+    CHECK_APP_CANARY()
 
     return err;
 }
@@ -129,7 +129,7 @@ parser_error_t parser_getItem(const parser_context_t *ctx,
     CHECK_PARSER_ERR(parser_getNumItems(ctx, &numItems))
     CHECK_APP_CANARY()
 
-    if (displayIdx < 0 || displayIdx >= numItems) {
+    if (displayIdx >= numItems) {
         return parser_no_data;
     }
 

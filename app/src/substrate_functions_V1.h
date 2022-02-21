@@ -59,7 +59,6 @@ parser_error_t _readEraIndex_V1(parser_context_t* c, pd_EraIndex_V1_t* v);
 parser_error_t _readEthTransaction_V1(parser_context_t* c, pd_EthTransaction_V1_t* v);
 parser_error_t _readGrandpaEquivocationProof_V1(parser_context_t* c, pd_GrandpaEquivocationProof_V1_t* v);
 parser_error_t _readH160_V1(parser_context_t* c, pd_H160_V1_t* v);
-parser_error_t _readH256_V1(parser_context_t* c, pd_H256_V1_t* v);
 parser_error_t _readIdentityFields_V1(parser_context_t* c, pd_IdentityFields_V1_t* v);
 parser_error_t _readIdentityInfo_V1(parser_context_t* c, pd_IdentityInfo_V1_t* v);
 parser_error_t _readIdentityJudgement_V1(parser_context_t* c, pd_IdentityJudgement_V1_t* v);
@@ -105,7 +104,6 @@ parser_error_t _readVecValidatorIndex_V1(parser_context_t* c, pd_VecValidatorInd
 parser_error_t _readVestingInfo_V1(parser_context_t* c, pd_VestingInfo_V1_t* v);
 parser_error_t _readVote_V1(parser_context_t* c, pd_Vote_V1_t* v);
 parser_error_t _readWeight_V1(parser_context_t* c, pd_Weight_V1_t* v);
-parser_error_t _readu8_array_32_V1(parser_context_t* c, pd_u8_array_32_V1_t* v);
 
 // toString functions
 parser_error_t _toStringAccountId_V1(
@@ -334,13 +332,6 @@ parser_error_t _toStringGrandpaEquivocationProof_V1(
 
 parser_error_t _toStringH160_V1(
     const pd_H160_V1_t* v,
-    char* outValue,
-    uint16_t outValueLen,
-    uint8_t pageIdx,
-    uint8_t* pageCount);
-
-parser_error_t _toStringH256_V1(
-    const pd_H256_V1_t* v,
     char* outValue,
     uint16_t outValueLen,
     uint8_t pageIdx,
@@ -656,13 +647,6 @@ parser_error_t _toStringVote_V1(
 
 parser_error_t _toStringWeight_V1(
     const pd_Weight_V1_t* v,
-    char* outValue,
-    uint16_t outValueLen,
-    uint8_t pageIdx,
-    uint8_t* pageCount);
-
-parser_error_t _toStringu8_array_32_V1(
-    const pd_u8_array_32_V1_t* v,
     char* outValue,
     uint16_t outValueLen,
     uint8_t pageIdx,
