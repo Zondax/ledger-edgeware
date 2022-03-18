@@ -23,7 +23,7 @@ extern "C" {
 #include <stddef.h>
 #include "substrate_methods.h"
 
-#ifdef TARGET_NANOX
+#if defined(TARGET_NANOX) || defined(TARGET_NANOS2)
 #define MAX_CALL_NESTING_SIZE 6
 #define MAX_CALL_VEC_SIZE 6
 #else
@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 typedef struct {
-    pd_CallIndex_t   callIndex;
+    pd_CallIndex_t callIndex;
     pd_Method_t method;
 
     pd_ExtrinsicEra_t era;
