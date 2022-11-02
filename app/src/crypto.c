@@ -35,6 +35,7 @@ zxerr_t crypto_extractPublicKey(key_kind_e addressKind, const uint32_t path[HDPA
     if (pubKeyLen < PK_LEN_25519) {
         return zxerr_invalid_crypto_settings;
     }
+     zxerr_t err = zxerr_ok;
 
     BEGIN_TRY
     {
@@ -72,16 +73,12 @@ zxerr_t crypto_extractPublicKey(key_kind_e addressKind, const uint32_t path[HDPA
                         break;
 #endif
                 default:
-                    CLOSE_TRY;
-                    return zxerr_invalid_crypto_settings;
+                    err = zxerr_invalid_crypto_settings;
             }
         }
         CATCH_ALL
         {
-            MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
-            MEMZERO(privateKeyData, SK_LEN_25519);
-            CLOSE_TRY;
-            return zxerr_unknown;
+            err = zxerr_unknown;
         }
         FINALLY
         {
@@ -91,7 +88,7 @@ zxerr_t crypto_extractPublicKey(key_kind_e addressKind, const uint32_t path[HDPA
     }
     END_TRY;
 
-    return zxerr_ok;
+    return err;
 }
 
 zxerr_t crypto_sign_ed25519(uint8_t *signature, uint16_t signatureMaxlen,
@@ -113,6 +110,8 @@ zxerr_t crypto_sign_ed25519(uint8_t *signature, uint16_t signatureMaxlen,
     uint8_t privateKeyData[SK_LEN_25519];
     int signatureLength = 0;
     unsigned int info = 0;
+
+    zxerr_t err = zxerr_ok;
 
     BEGIN_TRY
     {
@@ -147,11 +146,8 @@ zxerr_t crypto_sign_ed25519(uint8_t *signature, uint16_t signatureMaxlen,
         }
         CATCH_ALL
         {
-            MEMZERO(&cx_privateKey, sizeof(cx_privateKey));
-            MEMZERO(privateKeyData, SK_LEN_25519);
             *signatureLen = 0;
-            CLOSE_TRY;
-            return zxerr_unknown;
+            err = zxerr_unknown;
         }
         FINALLY
         {
@@ -161,7 +157,7 @@ zxerr_t crypto_sign_ed25519(uint8_t *signature, uint16_t signatureMaxlen,
         }
     }
     END_TRY;
-    return zxerr_ok;
+    return err;
 }
 
 #ifdef SUPPORT_SR25519
@@ -205,14 +201,12 @@ zxerr_t crypto_sign_sr25519_prephase(uint8_t *buffer, uint16_t bufferLen,
 zxerr_t crypto_sign_sr25519(uint8_t *signature, uint16_t signatureMaxlen,
                             uint16_t *signatureLen) {
 
+    zxerr_t err = zxerr_ok;
+
     BEGIN_TRY
     {
         TRY
         {
-            if (signatureMaxlen < MIN_BUFFER_LENGTH) {
-                CLOSE_TRY;
-                return zxerr_invalid_crypto_settings;
-            }
             *signature = PREFIX_SIGNATURE_TYPE_SR25519;
             sign_sr25519_phase1((uint8_t *) &N_sr25519_signdata.sk, (uint8_t *) &N_sr25519_signdata.pk, NULL, 0,
                          (uint8_t *) &N_sr25519_signdata.signdata, sr25519_signdataLen, signature + 1);
@@ -223,8 +217,7 @@ zxerr_t crypto_sign_sr25519(uint8_t *signature, uint16_t signatureMaxlen,
         }
         CATCH_ALL
         {
-            CLOSE_TRY;
-            return zxerr_unknown;
+            err = zxerr_unknown;
         };
         FINALLY
         {
@@ -232,7 +225,7 @@ zxerr_t crypto_sign_sr25519(uint8_t *signature, uint16_t signatureMaxlen,
         }
     }
     END_TRY;
-    return zxerr_ok;
+    return err;
 }
 #endif
 
