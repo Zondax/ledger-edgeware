@@ -35,10 +35,6 @@ const defaultOptions = {
 
 jest.setTimeout(60000)
 
-beforeAll(async () => {
-  await Zemu.checkAndPullImage()
-})
-
 describe('SR25519', function () {
   test('get address sr25519', async function () {
     const sim = new Zemu(APP_PATH)
@@ -73,7 +69,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-show_address_sr25519', 2)
+      await sim.compareSnapshotsAndApprove('.', 's-show_address_sr25519')
 
       const resp = await respRequest
       console.log(resp)
@@ -100,7 +96,7 @@ describe('SR25519', function () {
       const respRequest = app.getAddress(0x80000000, 0x80000000, 0x80000000, true, 1)
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
-      await sim.compareSnapshotsAndAccept('.', 's-show_address_reject_sr25519', 3, 2)
+      await sim.navigateAndCompareUntilText('.', 's-show_address_reject_sr25519', 'REJECT')
 
       const resp = await respRequest
       console.log(resp)
@@ -131,7 +127,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_normal', 5)
+      await sim.compareSnapshotsAndApprove('.', 's-sign_basic_normal')
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -179,7 +175,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_basic_expert', 11)
+      await sim.compareSnapshotsAndApprove('.', 's-sign_basic_expert')
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -221,7 +217,7 @@ describe('SR25519', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', 's-sign_large_nomination', 6)
+      await sim.compareSnapshotsAndApprove('.', 's-sign_large_nomination')
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)

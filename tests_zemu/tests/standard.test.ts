@@ -32,10 +32,6 @@ const defaultOptions = {
 
 jest.setTimeout(60000)
 
-beforeAll(async () => {
-  await Zemu.checkAndPullImage()
-})
-
 describe('Standard', function () {
   test.each(models)('can start and stop container', async function (m) {
     const sim = new Zemu(m.path)
@@ -109,7 +105,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-show_address`, 2)
+      await sim.compareSnapshotsAndApprove('.', `${m.prefix.toLowerCase()}-show_address`)
 
       const resp = await respRequest
 
@@ -138,7 +134,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-show_address_reject`, 3, 2)
+      await sim.navigateAndCompareUntilText('.', `${m.prefix.toLowerCase()}-show_address_reject`, 'REJECT')
 
       const resp = await respRequest
       console.log(resp)
@@ -169,7 +165,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_normal`, 5)
+      await sim.compareSnapshotsAndApprove('.', `${m.prefix.toLowerCase()}-sign_basic_normal`)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -216,7 +212,8 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_basic_expert`, 11)
+      await sim.compareSnapshotsAndApprove('.', `${m.prefix.toLowerCase()}-sign_basic_expert`)
+
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
@@ -257,7 +254,7 @@ describe('Standard', function () {
       // Wait until we are not in the main menu
       await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())
 
-      await sim.compareSnapshotsAndAccept('.', `${m.prefix.toLowerCase()}-sign_large_nomination`, m.name === 'nanos' ? 6 : 5)
+      await sim.compareSnapshotsAndApprove('.', `${m.prefix.toLowerCase()}-sign_large_nomination`)
 
       const signatureResponse = await signatureRequest
       console.log(signatureResponse)
